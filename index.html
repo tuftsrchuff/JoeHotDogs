@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <title>Joe's Hotdog Stand</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body>
+        <div class="banner"><h1>Joe's Hotdog Stand</h1></div>
+        <h2>Best Hot Dogs This Side of the Mississippi!</h2>
+
+        <img src="./images/HotDog.png" alt="hot-dog">
+
+        <div class="order">
+        <h2>Order Details</h2>
+        <script>
+            //Prompt users for their items
+            var hotdogs = parseFloat(prompt("How many hotdogs for your order?"));
+
+            var fries = parseFloat(prompt("How many fries for your order?"));
+
+           var sodas = parseFloat(prompt("How many sodas for your order?"));
+
+           var subTotal = (4.25 * hotdogs) + (2.6 * fries) + (1.5 * sodas);
+
+            var finalTotal = 0;
+
+            var discount = 0;
+
+            var tax = 0;
+
+            //Apply discount if over $20
+            if (subTotal >= 20){
+                discount = .1 * subTotal;
+                tax = (subTotal - discount) * 0.0625;
+                finalTotal = (subTotal - discount) + tax;
+            } else {
+                tax = subTotal* 0.0625;
+                finalTotal = subTotal + tax;
+            }
+
+            //Round numbers to two decimal places
+            finalTotal = Math.round(finalTotal * 100) / 100;
+            subTotal = Math.round(subTotal *100) / 100;
+            discount = Math.round(discount * 100) / 100;
+            tax = Math.round(tax * 100) / 100;
+
+            //Display all items now
+            //Items ordered
+            document.write("<p>Hotdogs: " + hotdogs + "</p>");
+            document.write("<p>Fries: " + fries + "</p>");
+            document.write("<p>Sodas: " + sodas + "</p>");
+
+            //Subtotals
+            document.write("<p>Subtotal: $" + subTotal + "</p></br>");
+
+            //Discount, if applicable
+            document.write("<p>Discount applied: $" + discount + "</p></br>");
+
+            //Tax
+            document.write("<p>Tax: $" + tax);
+
+            //Final total
+            document.write("<h3>Final Total: $" + finalTotal + "</h3>");
+
+        </script>
+        </div>
+    </body>
+</html>
